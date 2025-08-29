@@ -1,0 +1,6 @@
+{
+  "name": "Gemini Image Editor",
+  "description": "An interactive image editor powered by the Gemini 2.5 Flash Image Preview model. Upload an image, describe your desired edits, and let Gemini generate a new version for you.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

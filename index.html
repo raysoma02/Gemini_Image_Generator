@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Image Editor</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.run/@google/genai"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Gemini Image Editor</h1>
+      <p>Upload an image and tell Gemini how to change it.</p>
+    </header>
+    <main>
+      <div class="io-panel">
+        <section class="input-section" aria-labelledby="input-heading">
+          <h2 id="input-heading" class="visually-hidden">Image Input and Prompt</h2>
+          <div class="image-upload-container">
+            <label for="image-upload" class="drop-zone">
+              <div id="drop-zone-prompt" class="drop-zone-prompt">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <p>Drag & drop an image, or click to select a file</p>
+                <span>PNG, JPG, WEBP</span>
+              </div>
+              <img id="image-preview" class="image-preview" alt="Your uploaded image will appear here." aria-live="polite" />
+            </label>
+            <input type="file" id="image-upload" accept="image/png, image/jpeg, image/webp" hidden />
+          </div>
+          <div class="prompt-container">
+            <label for="prompt-input">Describe your edits:</label>
+            <textarea id="prompt-input" rows="4" placeholder="e.g., add a party hat on the person"></textarea>
+            <button id="edit-button" disabled>
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              Edit Image
+            </button>
+          </div>
+        </section>
+
+        <section class="output-section" aria-labelledby="output-heading">
+          <h2 id="output-heading" class="visually-hidden">Edited Image Output</h2>
+          <div id="output-container" class="output-container">
+            <div id="loader" class="loader" role="status" aria-live="assertive">
+              <div class="spinner"></div>
+              <p id="loader-message">Gemini is working its magic...</p>
+            </div>
+            <div id="error-container" class="error-container" role="alert"></div>
+            <img id="edited-image" alt="The edited image will appear here." />
+            <p id="edited-caption"></p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
